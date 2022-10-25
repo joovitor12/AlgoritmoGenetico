@@ -4,52 +4,52 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		AG.setCaracteres("!,.:;?áÁãÃâÂõÕôÔóÓéêÉÊíQWERTYUIOPASDFGHJKLÇZXCVBNMqwertyuiopasdfghjklçzxcvbnm1234567890 ");
+		AG.setCaracteres("!,.:;?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½QWERTYUIOPASDFGHJKLï¿½ZXCVBNMqwertyuiopasdfghjklï¿½zxcvbnm1234567890 ");
 		AG.setTaxaDeCrossover(0.6);
         AG.setTaxaDeMutacao(0.3);
-        boolean eltismo = true;
+        boolean elitismo = true;
         int tamPop = 100;
         int numMaxGeracoes = 10000;
         
         
 		Scanner in = new Scanner(System.in);
-		System.out.println("Defina a solução: ");
+		System.out.println("Defina a soluï¿½ï¿½o: ");
 		String solucao = in.nextLine();
 		while(solucao.length() < 5) {
-			System.out.println("Digite uma solução com tamanho maior que 5");
+			System.out.println("Digite uma soluï¿½ï¿½o com tamanho maior que 5");
 			solucao = in.nextLine();
 		}
         AG.setSolucao(solucao);      
         int numGenes = AG.getSolucao().length();
         
 
-        //cria a primeira população aleatérioa
+        //cria a primeira populaï¿½ï¿½o aleatï¿½rioa
         Populacao populacao = new Populacao(numGenes, tamPop);
 
         boolean temSolucao = false;
         int geracao = 0;
 
-        System.out.println("Iniciando... Fitness da solução: "+AG.getSolucao().length());
+        System.out.println("Iniciando... Fitness da soluï¿½ï¿½o: "+AG.getSolucao().length());
         
-        //loop até o critério de parada
+        //loop atï¿½ o critï¿½rio de parada
         while (!temSolucao && geracao < numMaxGeracoes) {
             geracao++;
 
             //cria nova populacao
-            populacao = AG.novaGeracao(populacao, eltismo);
+            populacao = AG.novaGeracao(populacao, elitismo);
 
-            System.out.println("Geração " + geracao + " | Fitness: " + populacao.getIndivduo(0).getFitness() + " | Melhor: " + populacao.getIndivduo(0).getGenes());
+            System.out.println("Geraï¿½ï¿½o " + geracao + " | Fitness: " + populacao.getIndivduo(0).getFitness() + " | Melhor: " + populacao.getIndivduo(0).getGenes());
             
             //verifica se tem a solucao
             temSolucao = populacao.temSolocao(AG.getSolucao());
         }
 
         if (geracao == numMaxGeracoes) {
-            System.out.println("Número Maximo de Gerações | " + populacao.getIndivduo(0).getGenes() + " " + populacao.getIndivduo(0).getFitness());
+            System.out.println("Nï¿½mero Maximo de Geraï¿½ï¿½es | " + populacao.getIndivduo(0).getGenes() + " " + populacao.getIndivduo(0).getFitness());
         }
 
         if (temSolucao) {
-            System.out.println("Encontrado resultado na geração " + geracao + " | " + populacao.getIndivduo(0).getGenes() + " (Fitness: " + populacao.getIndivduo(0).getFitness() + ")");
+            System.out.println("Encontrado resultado na geraï¿½ï¿½o " + geracao + " | " + populacao.getIndivduo(0).getGenes() + " (Fitness: " + populacao.getIndivduo(0).getFitness() + ")");
         }
     }
 	

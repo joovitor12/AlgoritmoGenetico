@@ -7,7 +7,6 @@ public class AG {
 	private static String caracteres;
 
 	public static Populacao novaGeracao(Populacao populacao, boolean elitismo) {
-		Random r = new Random();
 		// nova popula��o do mesmo tamanho da antiga
 		Populacao novaPopulacao = new Populacao(populacao.getTamPopulacao());
 
