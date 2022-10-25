@@ -8,23 +8,23 @@ public class AG {
 
 	public static Populacao novaGeracao(Populacao populacao, boolean elitismo) {
 		Random r = new Random();
-		// nova população do mesmo tamanho da antiga
+		// nova populaï¿½ï¿½o do mesmo tamanho da antiga
 		Populacao novaPopulacao = new Populacao(populacao.getTamPopulacao());
 
-		// se tiver elitismo, mantém o melhor indivíduo da geração atual
+		// se tiver elitismo, mantï¿½m o melhor indivï¿½duo da geraï¿½ï¿½o atual
 		if (elitismo) {
 			novaPopulacao.setIndividuo(populacao.getIndivduo(0));
 		}
 
-		// insere novos indivíduos na nova população, até atingir o tamanho máximo
+		// insere novos indivï¿½duos na nova populaï¿½ï¿½o, atï¿½ atingir o tamanho mï¿½ximo
 		while (novaPopulacao.getNumIndividuos() < novaPopulacao.getTamPopulacao()) {
 			// seleciona os 2 pais por torneio
 			Individuo[] pais = selecaoTorneio(populacao);
 
 			Individuo[] filhos = new Individuo[2];
 
-			// verifica a taxa de crossover, se sim realiza o crossover, se não, mantém os
-			// pais selecionados para a próxima geração
+			// verifica a taxa de crossover, se sim realiza o crossover, se nï¿½o, mantï¿½m os
+			// pais selecionados para a prï¿½xima geraï¿½ï¿½o
 			// if (r.nextDouble() <= taxaDeCrossover) {
 			filhos = crossover(pais[1], pais[0]);
 			// } else {
@@ -32,45 +32,14 @@ public class AG {
 			// filhos[1] = new Individuo(pais[1].getGenes());
 			// }
 
-			// adiciona os filhos na nova geração
+			// adiciona os filhos na nova geraï¿½ï¿½o
 			novaPopulacao.setIndividuo(filhos[0]);
 			novaPopulacao.setIndividuo(filhos[1]);
-
-			if (r.nextDouble() <= taxaDeMutacao) {
-				filhos[0] = mutacao(filhos[0]);
-			}
-			if (r.nextDouble() <= taxaDeMutacao) {
-				filhos[1] = mutacao(filhos[1]);
-			}
 		}
 
-		// ordena a nova população
+		// ordena a nova populaï¿½ï¿½o
 		novaPopulacao.ordenaPopulacao();
 		return novaPopulacao;
-	}
-
-	private static Individuo mutacao(Individuo individuo) {
-		Random r1 = new Random(individuo.getGenes().length());
-
-		int posicaoAleatoria = r1.nextInt();
-
-		char conteudoFormatado[] = individuo.getGenes().toCharArray();
-
-		if (conteudoFormatado.length <= posicaoAleatoria) {
-			String setOfCharacters = "abcdefghxyz1234567-/@";
-			Random r2 = new Random(setOfCharacters.length());
-			
-			int randomInt = r2.nextInt(setOfCharacters.length());
-			char randomChar = setOfCharacters.charAt(randomInt);
-
-			conteudoFormatado[posicaoAleatoria] = randomChar;
-		}
-
-		Individuo novoIndividuo = individuo;
-		novoIndividuo.setGenes(conteudoFormatado.toString());
-
-		return novoIndividuo;
-
 	}
 
 	public static Individuo[] crossover(Individuo individuo1, Individuo individuo2) {
@@ -98,7 +67,7 @@ public class AG {
 		geneFilho2 += genePai1.substring(pontoCorte1, pontoCorte2);
 		geneFilho2 += genePai2.substring(pontoCorte2, genePai2.length());
 
-		// cria o novo indivíduo com os genes dos pais
+		// cria o novo indivï¿½duo com os genes dos pais
 		filhos[0] = new Individuo(geneFilho1);
 		filhos[1] = new Individuo(geneFilho2);
 
@@ -115,7 +84,7 @@ public class AG {
 			populacaoIntermediaria.setIndividuo(populacao.getIndivduo(r.nextInt(populacao.getTamPopulacao())));
 			populacaoIntermediaria.setIndividuo(populacao.getIndivduo(r.nextInt(populacao.getTamPopulacao())));
 			populacaoIntermediaria.ordenaPopulacao();
-			// seleciona o melhor individuo da melhor população
+			// seleciona o melhor individuo da melhor populaï¿½ï¿½o
 			pais[i] = populacaoIntermediaria.getIndivduo(0);
 		}
 

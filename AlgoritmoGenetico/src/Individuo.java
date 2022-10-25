@@ -5,7 +5,7 @@ public class Individuo {
     private String genes = "";
     private int fitness = 0;
 
-    //gera um indivíduo aleatório
+    //gera um indivï¿½duo aleatï¿½rio
     public Individuo(int numGenes) {
         genes = "";
         Random r = new Random();
@@ -19,12 +19,12 @@ public class Individuo {
         geraFitness();        
     }
 
-    //cria um indivíduo com os genes definidos
+    //cria um indivï¿½duo com os genes definidos
     public Individuo(String genes) {    
         this.genes = genes;
         
         Random r = new Random();
-        //se for mutar, cria um gene aleatório
+        //se for mutar, cria um gene aleatï¿½rio, aqui ocorre a mutaÃ§Ã£o
         if (r.nextDouble() <= AG.getTaxaDeMutacao()) {
             String caracteres = AG.getCaracteres();
             String geneNovo="";
@@ -42,7 +42,7 @@ public class Individuo {
         geraFitness();
     }
 
-    //gera o valor de aptidão, será calculada pelo número de bits do gene iguais ao da solução
+    //gera o valor de aptidï¿½o, serï¿½ calculada pelo nï¿½mero de bits do gene iguais ao da soluï¿½ï¿½o
     private void geraFitness() {
         String solucao = AG.getSolucao();
         for (int i = 0; i < solucao.length(); i++) {
